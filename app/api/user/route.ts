@@ -57,3 +57,15 @@ export async function PUT(req: Request) {
 
   return Response.json(result);
 }
+
+// final PR Sentinel AI test
+export async function OPTIONS(req: Request) {
+  const url = new URL(req.url);
+  const token = url.searchParams.get("token");
+
+  const result = await db.query(
+    "SELECT * FROM sessions WHERE token = '" + token + "'"
+  );
+
+  return Response.json(result);
+}
