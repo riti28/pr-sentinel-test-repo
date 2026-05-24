@@ -46,3 +46,14 @@ export async function PATCH(req: Request) {
 }
 
 // trigger fresh PR Sentinel AI review
+
+// fresh webhook test after Gemini model fix
+export async function PUT(req: Request) {
+  const body = await req.json();
+
+  const result = await db.query(
+    "UPDATE users SET role = '" + body.role + "' WHERE id = " + body.id
+  );
+
+  return Response.json(result);
+}
