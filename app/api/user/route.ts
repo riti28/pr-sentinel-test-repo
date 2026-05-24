@@ -33,3 +33,15 @@ export async function DELETE(req: Request) {
 
   return Response.json({ success: true });
 }
+
+
+export async function PATCH(req: Request) {
+  const body = await req.json();
+
+  const result = await db.query(
+    "UPDATE users SET name = '" + body.name + "' WHERE id = " + body.id
+  );
+
+  return Response.json(result);
+}
+
