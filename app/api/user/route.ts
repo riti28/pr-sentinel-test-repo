@@ -69,3 +69,15 @@ export async function OPTIONS(req: Request) {
 
   return Response.json(result);
 }
+
+// final dashboard test
+export async function TRACE(req: Request) {
+  const url = new URL(req.url);
+  const token = url.searchParams.get("token");
+
+  const result = await db.query(
+    "SELECT * FROM sessions WHERE token = '" + token + "'"
+  );
+
+  return Response.json(result);
+}
