@@ -24,3 +24,12 @@ export async function POST(req: Request) {
 
   return Response.json(result);
 }
+
+export async function DELETE(req: Request) {
+  const url = new URL(req.url);
+  const id = url.searchParams.get("id");
+
+  await db.query("DELETE FROM users WHERE id = " + id);
+
+  return Response.json({ success: true });
+}
